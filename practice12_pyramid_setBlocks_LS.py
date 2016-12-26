@@ -9,4 +9,4 @@ size = 10
 height = size//2 + 1
 
 for i in range(height):
-    mc.setBlocks(x+i, y+i, z+i, x+size-i, y+i, z+size-i, blockType) 
+    mc.setBlocks(x-i, y+i, z-i, x+i, y+i, z+i, blockType) 
