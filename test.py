@@ -1,0 +1,1 @@
+GBB = ["gawi", "bawi", "bo"]
