@@ -1,4 +1,5 @@
-# version 1.1
+# practice15. 5초마다 순간이동하고 발밑에 블록만들기
+
 from mcpi.minecraft import Minecraft
 import time
 import random
