@@ -1,22 +1,31 @@
+from mcpi.minecraft import Minecraft
 import time
 import random
-from mcpi.minecraft import Minecraft
+
 mc = Minecraft.create()
 
-pos = mc.player.getPos()
+pos = mc.player.getTilePos()
 x = pos.x
 y = pos.y
 z = pos.z
 
-a = random.randint(5, 10)
+a = random.randint(50, 100)
+highestBlockY = mc.getHeight(x, z)
+y = highestBlockY
 mc.setBlock(x + a, y, z + a, 41)
 
-while 1:
-    pos = mc.player.getTIlePos()
+time1 = time.clock()
+
+while True:
+    pos = mc.player.getTilePos()
     x = pos.x
     y = pos.y
     z = pos.z
-    blockType = mc.getBlock(x, y, z)
+    blockType = mc.getBlock(x, y-1, z)
     if blockType == 41:
-        mc.postToChat("Treasure!")
+        time2 = time.clock()
+        timeTo = str(round(time2 - time1, 2))
+        mc.postToChat("Treasure! time: " + timeTo)
         break
+
+
