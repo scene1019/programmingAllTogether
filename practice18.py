@@ -9,10 +9,10 @@ x = pos.x
 y = pos.y
 z = pos.z
 
-a = random.randint(50, 100)
+randomRange = random.randint(50, 100)
 highestBlockY = mc.getHeight(x, z)
 y = highestBlockY
-mc.setBlock(x + a, y, z + a, 41)
+mc.setBlock(x+randomRange, y, z+randomRange, 41)
 
 time1 = time.clock()
 
