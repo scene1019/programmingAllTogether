@@ -25,10 +25,21 @@ while True:
     # 금 블록까지 남은 거리를 x, y, z로 대화창에 출력하라.
     mc.postToChat("The Gold is x: %d, y: %d, z: %d block from here." %(distanceX, distanceY, distanceZ))
     # 어느쪽으로 가야 할지 방향을 대화창에 출력하라.
+    if (abs(distanceX) - abs(distanceZ) >= 0) and (distanceX > 0):
+        mc.postToChat("go West!")
+    if (abs(distanceX) - abs(distanceZ) >= 0) and (distanceX < 0):
+        mc.postToChat("go East!")
+    if  distanceX == 0:
+        mc.postToChat("be close to GoldX!")
+    if (abs(distanceX) - abs(distanceZ) < 0) and (distanceZ > 0):
+        mc.postToChat("go North!")
+    if (abs(distanceX) - abs(distanceZ) < 0) and (distanceZ < 0):
+        mc.postToChat("go South!")
+    if  distanceZ == 0:
+        mc.postToChat("be close to GoldZ!")
 
-    #mc.postToChat("gold x: %d, y: %d, z: %d" %(goldX, goldY, goldZ))
+
     if mc.getBlock(x, y-1, z) == blockType:
-        mc.postToChat("=" * 64)
+        mc.postToChat("Treasure!!")
         break
 
-#mc.postToChat("go north/south/east/west")
