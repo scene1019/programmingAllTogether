@@ -22,3 +22,5 @@ for i in range(26): #test fot i in lettets:
     if name.count(letters[i]) == 0:
         noletters += letters[i]
 print("없는 알파벳: %s" %noletters)
+
+
