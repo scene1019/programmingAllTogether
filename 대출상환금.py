@@ -1,31 +1,29 @@
-#대출 상환금 계산
-#
-#대출금에 대해서 얼마나 갚아나가야 하는지 계산해주는 프로그램
-#
-#작성자 : 오아리
-#작성일자 : 2011.9.11
+# 대출 상환금 계산 프로그램, 원작성자: 오아리
+# 리팩토링: 이슬
 
-#사용자 입력받음
-print("대출 상환금 계산 서비스에 오신걸 환영합니다.")
+print("대출 상환금 계산을 시작합니다. 상환 방식은 '원리금 균등' 방식입니다.")
 
-principal=int(input("대출 원금을 입력해주세요. (백만원 이상만 계산해 드립니다..)\n"))
-assert principal>=1000000
-years=int(input("상환 기간(연 단위)을 입력해주세요.\n"))
-assert 1<=years
-rate=float(input("이자율을 백분률*(%)로 입력해주세요.\n"))
-assert 0<=rate<=100
+loanAmount = int(input("\n대출 금액을 '만 원 단위'로 입력하세요. (100만 원 이상)\n대출 금액: "))
+loanAmount = loanAmount * 10000
+#assert principal>=1000000
 
-#상환금 계산
-yearmoney=int(((1+rate/100)**years) * principal * rate/100/(((1+rate/100)**years)-1))
-monthmoney=int(yearmoney/12)
-totalmoney=int(yearmoney*years)
+loanYears = int(input("대출 기간을 '연 단위'로 입력하세요. \n대출 기간: "))
+loanMonth = loanYears * 12
+#assert 1<=years
 
-#출력
-print("잘 입력하셨습니다. 원하시는 내용은 다음과 같습니다.")
-print(principal,"원을",years,"년 동안 연 이자율",rate,"%로 빌리신다고 하셨습니다.")
+interestYear = float(input("연이율을 입력하세요.\n연이율: "))
+interestMonth = (interestYear / 12) * 0.01
+#assert 0<=rate<=100
 
-print("계산 결과를 보여드리겠습니다.")
-print("1년에 한번씩 상환하신다면 매년 약",yearmoney,"원 씩 지불하셔야 합니다.")
-print("1달에 한번씩 상환하신다면 매년 약",monthmoney,"원 씩 지불하셔야 합니다.")
-print("상환 완료시까지 총 상환금액은 약",totalmoney,"원 입니다.")
-print("저희 서비스를 이용해주셔서 감사합니다.\n 또 들러주세요.")
+# 대출 상환금 계산
+calcFactor = (1 + interestMonth) ** loanMonth
+paymentMonth = (loanAmount * interestMonth * calcFactor) / (calcFactor - 1)
+
+
+# 계산 결과
+print("\n입력하신 내용은 다음과 같습니다. \n 대출 금액: %s원\n 대출 기간: %s년\n 연이율:   %.2f%%" %(loanAmount, loanYears, interestYear))
+#print(principal,"원을",years,"년 동안 연 이자율",rate,"%로 빌리신다고 하셨습니다.")
+
+print("\n계산 결과는 다음과 같습니다.")
+print("월 상환금: %d원" %paymentMonth)
+
