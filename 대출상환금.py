@@ -1,5 +1,7 @@
 # 대출 상환금 계산 프로그램, 원작성자: 오아리
 # 리팩토링: 이슬
+#import locale
+#locale.setlocale(locale.LC_ALL, '')
 
 print("대출 상환금 계산을 시작합니다. 상환 방식은 '원리금 균등' 방식입니다.")
 
@@ -18,12 +20,36 @@ interestMonth = (interestYear / 12) * 0.01
 # 대출 상환금 계산
 calcFactor = (1 + interestMonth) ** loanMonth
 paymentMonth = (loanAmount * interestMonth * calcFactor) / (calcFactor - 1)
+paymentMonth = int(paymentMonth)
+#paymentMonth = int(locale.format('%f', paymentMonth, 1))
+
+# 쉼표 넣기
+strLoanAmount = str(loanAmount)
+comma = ','
+commaLoanAmount = ''
+
+for i in range(len(strLoanAmount)):
+    i += 1
+    minusIndex = i * -1
+    if (i == (len(strLoanAmount))) or (minusIndex % 3 != 0):
+        commaLoanAmount = strLoanAmount[-i] + commaLoanAmount
+    else:
+        commaLoanAmount = comma + strLoanAmount[-i] + commaLoanAmount
+
+strPaymentMonth = str(paymentMonth)
+commaPaymentMonth = ''
+
+for j in range(len(strPaymentMonth)):
+    j += 1
+    minusIndex = j * -1
+    if (j == (len(strPaymentMonth))) or (minusIndex % 3 != 0):
+        commaPaymentMonth = strPaymentMonth[-j] + commaPaymentMonth
+    else:
+        commaPaymentMonth = comma + strPaymentMonth[-j] + commaPaymentMonth
 
 
 # 계산 결과
-print("\n입력하신 내용은 다음과 같습니다. \n 대출 금액: %s원\n 대출 기간: %s년\n 연이율:   %.2f%%" %(loanAmount, loanYears, interestYear))
-#print(principal,"원을",years,"년 동안 연 이자율",rate,"%로 빌리신다고 하셨습니다.")
-
+print("\n입력하신 내용은 다음과 같습니다. \n 대출 금액: %s원\n 대출 기간: %s년\n 연이율:   %.2f%%" %(commaLoanAmount, loanYears, interestYear))
 print("\n계산 결과는 다음과 같습니다.")
-print("월 상환금: %d원" %paymentMonth)
+print("월 상환금: %s원" %commaPaymentMonth)
 
