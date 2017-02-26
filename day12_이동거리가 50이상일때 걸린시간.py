@@ -1,7 +1,11 @@
-from mcpi.minecraft import Minecraft
+
+import mcpi.minecraft as minecraft
+mc = minecraft.Minecraft.create()
+
+#from mcpi.minecraft import Minecraft
 import time
 import math
-mc = Minecraft.create()
+#mc = Minecraft.create()
 
 
 
