@@ -1,7 +1,7 @@
-won1 = '7654321'
-won2 = '9876'
+won = '7654321'
+#won2 = '9876'
 comma = ','
-new1 = ''
+new = ''
 
 #def commaComma(won, new):
 for i in range(len(won)):

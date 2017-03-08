@@ -28,13 +28,14 @@ strLoanAmount = str(loanAmount)
 comma = ','
 commaLoanAmount = ''
 
+# 수치를 문자열로 바꾸고 1의 자리부터 연산하되 3의 배수 자릿수에서는 쉼표를 더한다.
 for i in range(len(strLoanAmount)):
     i += 1
     minusIndex = i * -1
-    if (i == (len(strLoanAmount))) or (minusIndex % 3 != 0):
-        commaLoanAmount = strLoanAmount[-i] + commaLoanAmount
+    if (i == (len(strLoanAmount))) or (minusIndex % 3 != 0): # 마지막 자리와 3의 배수 자릿수는 쉼표 없이 더하고
+        commaLoanAmount = strLoanAmount[-i] + commaLoanAmount # 연산 순서 유의
     else:
-        commaLoanAmount = comma + strLoanAmount[-i] + commaLoanAmount
+        commaLoanAmount = comma + strLoanAmount[-i] + commaLoanAmount # 3의 배수 자릿수는 쉼표를 더한 다음 숫자를 더한다.
 
 strPaymentMonth = str(paymentMonth)
 commaPaymentMonth = ''
