@@ -15,7 +15,7 @@ while (userInput != 0) and (userInput != 1) and (userInput != 2):
     userInput = input("아니, 셋 중에 하나를 골라! \n가위(0), 바위(1), 보(2): ")
     userInput = int(userInput)
 
-comInput = int(random.randint(0,2))
+comInput = random.randint(0,2) # 또는 int(random.choice('012')), choice에는 늘어선 데이터를 넣어야 함. 리턴값은 문자열
 
 print("사용자: %s\n컴퓨터: %s\n" %(GBB[userInput], GBB[comInput]))
 
