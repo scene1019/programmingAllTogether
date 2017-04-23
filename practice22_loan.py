@@ -7,7 +7,7 @@ print("대출 상환금 계산을 시작합니다. 상환 방식은 '원리금 �
 
 loanAmount = int(input("\n대출 금액을 '만 원 단위'로 입력하세요. (100만 원 이상)\n대출 금액: "))
 loanAmount = loanAmount * 10000
-#assert principal>=1000000
+#assert principal>=1000000 # assert 다음 구문이 옳을 때만 다음 행이 실행됨. 옳지 않으면 오류를 출력하며 종료됨.
 
 loanYears = int(input("대출 기간을 '연 단위'로 입력하세요. \n대출 기간: "))
 loanMonth = loanYears * 12
